@@ -2,16 +2,6 @@
     session_start();
     require 'connect.php';
     $hasil = $_SESSION['hasil'];
-    // print_r ($hasil);
-    // $desiredCameraIDs = array(
-    //     $hasil[0]["cameraID"], $hasil[1]["cameraID"], $hasil[2]["cameraID"],
-    //     $hasil[3]["cameraID"], $hasil[4]["cameraID"], $hasil[5]["cameraID"]
-    // );
-    // $cameraIDsString = implode(',', $desiredCameraIDs);
-    // $cameras = query("SELECT * FROM cameras WHERE cameraID IN ($cameraIDsString) ORDER BY cameraID");
-
-    // print_r ($cameras);
-    
 ?>
 
 <!DOCTYPE html>
