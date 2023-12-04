@@ -1,9 +1,25 @@
 <?php 
     require 'functions.php';
-    $cameras = query("SELECT * FROM cameras");
 ?>
 
 <?php 
+    
+
+    // print_r ($normalisasi[0]);
+    // echo $normalisasi[0];
+    
+if(isset($_POST['submit'])) {
+    if($_POST["merek"] == "CANON") {
+        $cameras = query("SELECT * FROM cameras WHERE merek = 'CANON'");
+    } elseif ($_POST["merek"] == "NIKON") {
+        $cameras = query("SELECT * FROM cameras WHERE merek = 'NIKON'");
+    } elseif ($_POST["merek"] == "SONY") {
+        $cameras = query("SELECT * FROM cameras WHERE merek = 'SONY'");
+    } else {
+        $cameras = query("SELECT * FROM cameras");
+    }
+    
+
     session_start();
     $gbr = [];
     $vid = [];
@@ -40,10 +56,6 @@
         $i++;
     }
 
-    // print_r ($normalisasi[0]);
-    // echo $normalisasi[0];
-    
-    if(isset($_POST['submit'])){
         $bobot1 = isset($_POST['bobot1']) ? $_POST['bobot1'] : null;
         $bobot2 = isset($_POST['bobot2']) ? $_POST['bobot2'] : null;
         $bobot3 = isset($_POST['bobot3']) ? $_POST['bobot3'] : null;
@@ -106,7 +118,19 @@
     </table>
     <h1>Rekomendasi Kamera</h1>
 
+    
+
     <form action="" method="post">
+        <label for="merek" name="merek">Merek : </label>
+        
+        <select id="merek" class="merek" name="merek">
+            <option value="all">Semua Merek</option>
+            <option value="CANON">CANON</option>
+            <option value="NIKON">NIKON</option>
+            <option value="SONY">SONY</option>
+        </select>
+        <br><br>
+
         Resolusi Foto :
         <br>
         Sangat Tidak Penting

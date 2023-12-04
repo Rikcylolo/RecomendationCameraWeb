@@ -1,7 +1,9 @@
-<?php 
-    session_start();
-    require 'functions.php';
-    $hasil = $_SESSION['hasil'];
+<?php
+session_start();
+require 'functions.php';
+$hasil = $_SESSION['hasil'];
+
+$filterValue = isset($_GET['filter']) ? $_GET['filter'] : count($hasil);
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +20,14 @@
     </style>
 </head>
 <body>
-<table border= "1px"; cellpadding= "10px"; cellspacing= "0px"; float="right">
+    <form action="" method="get">
+        <select id="filter" class="filter" name="filter" onchange="this.form.submit()">
+            <option value="6" <?= ($filterValue == 6) ? 'selected' : ''; ?>>6</option>
+            <option value="<?= count($hasil);?>" <?= ($filterValue == count($hasil)) ? 'selected' : ''; ?>>All</option>
+        </select>
+    </form>
+
+    <table border="1px" cellpadding="10px" cellspacing="0px" float="left">
         <tr>
             <th>No</th>
             <th>Gambar</th>
@@ -29,7 +38,7 @@
 
         <?php $i = 1; ?>
         <?php foreach ($hasil as $camera): ?>
-            <?php if ($i <= 6): ?>
+            <?php if ($i <= $filterValue): ?>
                 <tr>
                     <td><?= $i; ?></td>
                     <td><img src="<?= $camera["gambar"];?>" alt=""></td>
