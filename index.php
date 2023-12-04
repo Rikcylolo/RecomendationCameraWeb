@@ -1,6 +1,7 @@
 <?php 
-    require 'connect.php';
+    require 'functions.php';
     $cameras = query("SELECT * FROM cameras");
+    // print_r ($cameras);
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +23,7 @@
         <tr>
             <th><a href="index.php">Katalog Kamera</a></th>
             <th><a href="recomendation.php">Rekomendasi</a></th>
+            <th><a href="insert.php">Masukkan Data kamera</a></th>
         </tr>
     </table>
     <h1>Daftar Kamera</h1>
@@ -47,6 +49,17 @@
                             Pilih
                         </button>
                     </form>
+                    <a href="update.php?cameraID=<?= $camera["cameraID"];?>">
+                            <button type="submit" name="submit" >
+                                Update
+                            </button>
+                        </a>
+                        <br>
+                    <a href="delete.php?cameraID=<?= $camera["cameraID"];?>"onclick="return confirm('Yakin hapus?');">
+                        <button type="submit" name="submit" >
+                            Delete
+                        </button>
+                    </a>
                 </td>
 
                 <?php $i++; ?>

@@ -1,5 +1,5 @@
 <?php 
-    require 'connect.php';
+    require 'functions.php';
     $cameras = query("SELECT * FROM cameras");
 ?>
 

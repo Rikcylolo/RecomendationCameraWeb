@@ -1,5 +1,5 @@
 <?php 
-    require 'connect.php';
+    require 'functions.php';
     $id = $_POST["submit"];
     $cameras = query("SELECT * FROM cameras WHERE cameraID = '$id'");
 ?>
