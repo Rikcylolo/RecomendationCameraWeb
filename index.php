@@ -2,6 +2,14 @@
     require 'functions.php';
     $cameras = query("SELECT * FROM cameras");
     // print_r ($cameras);
+
+    if (isset($_POST["merek"])) {
+        $cameras = merek($_POST["merek"]);
+    }
+
+    if (isset($_POST["cari"])) {
+        $cameras = cari($_POST["keyword"]);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +35,33 @@
         </tr>
     </table>
     <h1>Daftar Kamera</h1>
+    
+    <form action="" method="post" id="carimerek">
+        <label for="merek" name="merek">Merek : </label>
+        
+        <select id="merek" class="merek" name="merek" onchange="submitForm()">
+            <option value="all">Semua Merek</option>
+            <option value="CANON">CANON</option>
+            <option value="NIKON">NIKON</option>
+            <option value="SONY">SONY</option>
+        </select>
+    </form>
+    <script>
+        function submitForm() {
+            document.getElementById("carimerek").submit();
+        }
+    </script>
+    <br>
+    <form action="" method="post">
+        <label for="cari">Cari kamera : </label>
+        <input type="text" name="keyword" id="keyword" size="20" autocomplete="off"
+        placeholder="Keyword ...">
+        <button type="submit" name="cari">Cari</button>
+    </form>
+
+    <br>
+
+
     <table border= "1px"; cellpadding= "10px"; cellspacing= "0px"; float="right">
         <tr>
             <th>No</th>

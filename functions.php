@@ -86,4 +86,21 @@
         mysqli_query($conn, "DELETE FROM cameras WHERE cameraID = $id");
         return mysqli_affected_rows($conn);
     }
+
+    function merek($merek) {
+        $query = "SELECT * FROM cameras WHERE
+                    merek LIKE '%$merek%'
+                    ";
+        
+        return query($query);
+    }
+
+    function cari($keyword) {
+        $query = "SELECT * FROM cameras WHERE
+                    merek LIKE '%$keyword%' OR
+                    namaProduk LIKE '%$keyword%'
+                    ";
+        
+        return query($query);
+    }
 ?>
